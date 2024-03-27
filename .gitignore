@@ -35,4 +35,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# cesium files that gets copied over by copy webpack plugin
 /public/cesium

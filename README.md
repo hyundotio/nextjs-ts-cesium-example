@@ -5,7 +5,7 @@
 You know what to do... `npm install` and `npm run dev` or `npm run build` then `npm run start`
 
 ## Important bits
-https://nextjs14-cesium.vercel.app
+https://nextjs-cesium.vercel.app
 
 #### Demo
 Literally just pointed Vercel to this repo to build and run automatically. 
@@ -25,3 +25,4 @@ With all the work above, it is very important to utilize the dynamically called 
 
 ### Credits
 Thank you https://github.com/willwill96 for helping me get started
+and please give this repo a star if it was helpful!
