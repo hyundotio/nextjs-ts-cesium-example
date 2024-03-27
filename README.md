@@ -5,6 +5,10 @@
 You know what to do... `npm install` and `npm run dev` or `npm run build` then `npm run start`
 
 ## Important bits
+https://nextjs14-cesium.vercel.app
+
+#### Demo
+Literally just pointed Vercel to this repo to build and run automatically. 
 
 #### next.config.mjs
 Cesium requires some files to be copied in a publicly accessible folder. This is achieved with CopyWebPackPlugin... *BUT* each copy statements requires `info: { minimized: true }`
