@@ -5,7 +5,9 @@
 You know what to do... `npm install` and `npm run dev` or `npm run build` then `npm run start` - Yarn probably works too...
 
 ## Important bits
-https://nextjs-cesium.vercel.app
+https://nextjs-cesium.vercel.app <- Live demo
+
+https://github.com/hyundotio/next-ts-pagerouter-cesium-example <- Click here for Page router example
 
 #### Demo
 Literally just pointed Vercel to this repo to build and run automatically. 
