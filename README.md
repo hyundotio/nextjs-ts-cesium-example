@@ -23,7 +23,7 @@ It is just cleaner to have Cesium related components as client only components. 
 
 I won't go into every method that I've tried but every method I've tried has resulted in browser errors, Next.js errors, and/or Vercel (500 status filesystem) errors. Using the CopyWebPackPlugin, wrapping it in a dynamic component, and then finally importing the Cesium files via `import` inside a `useEffect` yielded 100% success.
 
-#### Next.js quirks
+#### Next.js + React quirks
 On NextJS 13.4+ React Strict-Mode is enabled by default. In `CesiumComponent.tsx` there is some extra code in `initializeCesiumJs` function and the `cleanUpPrimitives` function itself to clean up any possible things (in this specific case, primitives) that may be added as a duplicate when the function is called twice. Optionally, you can disable React strcit mode and remove this code.
 
 #### TypeScript shenanigans with Cesium.js
