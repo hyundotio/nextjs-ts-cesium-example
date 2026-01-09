@@ -1,26 +1,28 @@
 {
-  "name": "next14-ts-cesium-example",
+  "name": "next16-ts-cesium-example",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "copy-cesium": "cpx \"node_modules/cesium/Build/Cesium/**\" public/cesium",
+    "dev": "npm run copy-cesium && next dev",
+    "build": "npm run copy-cesium && next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "cesium": "^1.115.0",
-    "next": "14.1.4",
-    "react": "^18",
-    "react-dom": "^18"
+    "cesium": "^1.137.0",
+    "next": "^16.1.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "copy-webpack-plugin": "^12.0.2",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.4",
+    "cpx2": "^8.0.0",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.1.1",
     "typescript": "^5"
   }
 }
