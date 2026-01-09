@@ -18,15 +18,26 @@ Literally just pointed Vercel to this repo to build and run automatically.
 
 In your `.env` file, add a field called `NEXT_PUBLIC_CESIUM_TOKEN` and assign your Cesium Access Token. This is optional if you plan on using other services.
 
-#### next.config.js
+#### Asset Copying (No more Webpack!)
 
-Cesium requires some files to be copied in a publicly accessible folder. This is achieved with CopyWebPackPlugin... _BUT_ each copy statements requires `info: { minimized: true }`
+Cesium requires static assets (Workers, Widgets, etc.) to be served from a public folder.
+
+In previous versions (using Next.js 14), we used `CopyWebpackPlugin`. However, **Next.js 16 uses Turbopack by default**, which does not support Webpack plugins.
+
+**The Solution:**
+We now use `cpx` (installed via `cpx2`) to copy files from `node_modules` to `public/cesium` before the server starts. This is handled automatically in the `package.json` scripts:
+* `"dev": "npm run copy-cesium && next dev"`
+* `"build": "npm run copy-cesium && next build"`
+
+Consequently, `next.config.js` is now completely clean of custom Webpack config!
 
 #### Next.js troubles
 
 It is just cleaner to have Cesium related components as client only components. So in this case, both the Cesium component and the dynamic ssr off wrappers are tagged with `'use client'`
 
-I won't go into every method that I've tried but every method I've tried has resulted in browser errors, Next.js errors, and/or Vercel (500 status filesystem) errors. Using the CopyWebPackPlugin, wrapping it in a dynamic component, and then finally importing the Cesium files via `import` inside a `useEffect` yielded 100% success.
+I won't go into every method that I've tried but every method I've tried has resulted in browser errors, Next.js errors, and/or Vercel (500 status filesystem) errors. Using the `cpx` script method, wrapping it in a dynamic component, and then finally importing the Cesium files via `import` inside a `useEffect` yielded 100% success.
+
+**Note:** Since we removed the Webpack `DefinePlugin`, the `CESIUM_BASE_URL` is now manually set on the `window` object inside `CesiumComponent.tsx`.
 
 #### Next.js + React quirks
 
